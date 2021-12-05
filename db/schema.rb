@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_05_095748) do
+ActiveRecord::Schema.define(version: 2021_12_05_104748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "collaborations", force: :cascade do |t|
+    t.string "channel_title"
+    t.integer "count"
+    t.string "channel_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "youtuber_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -26,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_12_05_095748) do
 
   create_table "youtubers", force: :cascade do |t|
     t.string "channel_title"
-    t.integer "channel_id"
+    t.string "channel_id"
     t.string "channel_thumbnail"
     t.string "last_editor"
     t.text "content"

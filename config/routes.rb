@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users
       resources :youtubers
+      resources :collaborations
+      resources :favorites
     end
   end
 end
