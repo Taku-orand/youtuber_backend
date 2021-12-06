@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
-  namespace :api do
-    namespace :v1 do
-      resources :users
-      resources :youtubers
-      resources :favorites
-    end
-  end
+  resources :users
+  resources :youtubers
+  resources :favorites
   # カウントアップ
   resources :collaborations
+
+  # コラボ　のカウント用
   get '/count_up', to: 'collaborations#count_up'
 
   # 新規登録用

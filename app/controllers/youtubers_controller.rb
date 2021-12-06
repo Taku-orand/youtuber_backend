@@ -1,4 +1,4 @@
-class Api::V1::YoutubersController < ApplicationController
+class YoutubersController < ApplicationController
   def index
     render json: {
       youtubers: "たくや"
