@@ -1,4 +1,4 @@
-class Api::V1::CollaborationsController < ApplicationController
+class CollaborationsController < ApplicationController
   def create
     new_collaboration = Collaboration.new(collaborations_params)
 
@@ -16,7 +16,7 @@ class Api::V1::CollaborationsController < ApplicationController
   end
 
   def count_up
-
+    user = user.find(current_user.id)
   end
 
   private

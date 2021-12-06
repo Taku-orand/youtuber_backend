@@ -5,19 +5,22 @@
 # React側では、ここでレンダリングされたJSONデータを取得して扱います。
 class RegistrationsController < ApplicationController
   def signup
-    user = User.new(registrations_params)
+    @user = User.new(registrations_params)
 
-    if @user.save
+    begin
+      @user.save!
       login!
-      render json: { status: :created, user: user }
-    else
+      render json: { status: :created, user: @user }
+      
+    rescue => exception
       render json: { status: 500 }
+      p exception
     end
   end
 
   private
 
   def registrations_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :introduction)
   end
 end

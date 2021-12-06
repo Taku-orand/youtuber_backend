@@ -3,10 +3,12 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users
       resources :youtubers
-      resources :collaborations
       resources :favorites
     end
   end
+  # カウントアップ
+  resources :collaborations
+  get '/count_up', to: 'collaborations#count_up'
 
   # 新規登録用
   post '/signup', to: 'registrations#signup'
