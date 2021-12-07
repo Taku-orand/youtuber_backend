@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :collaborations
 
   # コラボ　のカウント用
-  get '/count_up', to: 'collaborations#count_up'
+  get '/collaborations/countup/:id', to: 'collaborations#count_up'
 
   # 新規登録用
   post '/signup', to: 'registrations#signup'

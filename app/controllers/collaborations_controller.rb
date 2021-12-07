@@ -15,8 +15,29 @@ class CollaborationsController < ApplicationController
     end
   end
 
+  def show
+    collaborations = Collaboration.where(youtuber_id: params[:id])
+    if collaborations
+      render json: {
+        collaborations: collaborations
+      }
+    else
+      render json: {
+        collaborations: "Not found"
+      }
+    end
+  end
+
   def count_up
-    user = user.find(current_user.id)
+    collaboration = Collaboration.find(params[:id])
+    collaboration.count += 1
+
+    begin
+      collaboration.save!
+      render json: {countup: true}
+    rescue => exception
+      render json: {countup: false}
+    end
   end
 
   private
