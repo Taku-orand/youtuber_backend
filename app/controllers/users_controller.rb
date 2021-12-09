@@ -1,10 +1,6 @@
+#ログイン関連用
+#ただし、使用していない
 class UsersController < ApplicationController
-  def index
-    render json: {
-      user: "たくや"
-    }
-  end
-
   def create
     new_user = User.new(users_params)
     begin

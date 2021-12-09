@@ -1,4 +1,5 @@
 class CollaborationsController < ApplicationController
+  # コラボの新規追加
   def create
     new_collaboration = Collaboration.new(collaborations_params)
 
@@ -15,6 +16,7 @@ class CollaborationsController < ApplicationController
     end
   end
 
+  # youtuber_idに合致したコラボYoutuberを取得する
   def show
     collaborations = Collaboration.where(youtuber_id: params[:id])
     if collaborations
@@ -28,6 +30,7 @@ class CollaborationsController < ApplicationController
     end
   end
 
+  # コラボ投票のカウント用
   def count_up
     collaboration = Collaboration.find(params[:id])
     collaboration.count += 1
