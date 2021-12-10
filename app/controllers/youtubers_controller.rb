@@ -19,18 +19,18 @@ class YoutubersController < ApplicationController
 
   # youtuberを新規作成
   def create
-    p youtubers_params[:channel_id]
     youtuber = Youtuber.find_by(channel_id: youtubers_params[:channel_id])
     if youtuber
       render json: { title: "すでに登録されています Youtuber一覧で確認してください" }
-    end
-    new_youtuber = Youtuber.new(youtubers_params)
-    begin
-      new_youtuber.save!
-      render json: { created: true }
-    rescue => exception
-      p exception
-      render json: { created: false }
+    else
+      new_youtuber = Youtuber.new(youtubers_params)
+      begin
+        new_youtuber.save!
+        render json: { created: true }
+      rescue => exception
+        p exception
+        render json: { created: false }
+      end
     end
   end
 
